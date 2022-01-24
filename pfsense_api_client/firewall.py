@@ -1,7 +1,7 @@
 """ firewall-rule related things """
 
 from enum import Enum
-from typing import List, Optional, Union
+from typing import List, Union
 
 import pydantic
 
@@ -100,29 +100,13 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create
 # TODO: url = "/api/v1/firewall/virtual_ip"
 
 def get_firewall_rules(self,
-    interface: Optional[str]=None,
     ):
-    """ gets the firewall rules """
-    # docurl = https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-rules
-    results = self.call("/api/v1/firewall/rule", method='GET')
-    data = results.json()
+    """ gets the firewall rules
 
-    if "data" not in data:
-        raise ValueError("no data")
+    https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-rules
+    """
+    url = "/api/v1/firewall/rule"
+    method = "GET"
+    results = self.call(url=url, method=method)
 
-    rules = data["data"]
-    if not interface:
-        return rules
-
-    retval = []
-    for rule in rules:
-        interfaces = rule.get("interface", None)
-        if not interfaces:
-            continue
-        interface_list = interfaces.split(",")
-        if interface not in interface_list:
-            continue
-
-        retval.append(rule)
-    data["data"] = retval
-    return data
+    return results
