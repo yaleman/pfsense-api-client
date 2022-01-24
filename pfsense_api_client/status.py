@@ -1,0 +1,11 @@
+""" status-related endpoints """
+
+# TODO: url = "/api/v1/status/carp"
+# TODO: url = "/api/v1/status/gateway"
+# TODO: url = "/api/v1/status/interface"
+# TODO: url = "/api/v1/status/log/config_history"
+# TODO: url = "/api/v1/status/log/dhcp"
+# TODO: url = "/api/v1/status/log/firewall"
+# TODO: url = "/api/v1/status/log/system"
+# TODO: url = "/api/v1/status/openvpn"
+# TODO: url = "/api/v1/status/system"

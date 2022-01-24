@@ -1,10 +1,8 @@
 """ testing firewall things """
 
-
 import pytest
 
 from pfsense_api_client import PFSenseAPIClient
-
 
 @pytest.fixture(name="pfsense")
 def pfsense_api_client():

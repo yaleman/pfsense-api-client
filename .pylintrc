@@ -1,4 +1,5 @@
 [MASTER]
+disable=W0511
 # https://github.com/samuelcolvin/pydantic/issues/1961#issuecomment-759522422
 extension-pkg-whitelist=pydantic
 max-line-length=200
