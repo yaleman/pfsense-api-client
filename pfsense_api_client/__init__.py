@@ -16,10 +16,10 @@ from . import system
 
 __all__ = [
     "PFSenseAPIClient",
-    ]
+]
 
-class Config(BaseModel):
-    """ this sets up the right typing from the config file"""
+class PFSenseConfig(BaseModel):
+    """ This sets up the right typing from the config file"""
     username: str
     password: str
     port: int
@@ -56,7 +56,7 @@ class PFSenseAPIClient():
             if not self.config_filename.exists():
                 error = f"Filename {self.config_filename.as_posix()} does not exist."
                 raise FileNotFoundError(error)
-            pydantic_config = Config(**json.load(self.config_filename.open(encoding="utf8")))
+            pydantic_config = PFSenseConfig(**json.load(self.config_filename.open(encoding="utf8")))
             self.hostname = pydantic_config.hostname
             self.username = pydantic_config.username
             self.password = pydantic_config.password
@@ -74,11 +74,11 @@ class PFSenseAPIClient():
         url: str,
         method: Optional[str]=None,
         payload: Dict[str, Any]=None,
-        ):
+        ) -> requests.Response:
         """ makes an API call """
         call_url = f"{self.baseurl}{url}"
 
-        print(f"mode: {self.mode}")
+        # print(f"mode: {self.mode}")
         if self.mode == "local":
             # this is the default
             if not payload:
@@ -92,10 +92,6 @@ class PFSenseAPIClient():
         else:
             raise NotImplementedError("JWT and Access Token aren't implemented yet.")
 
-        print("payload:")
-        print(json.dumps(payload, indent=4, default=str))
-
-
         if method is None:
             method="GET"
         # print(f"calling {call_url} {method}")
@@ -104,16 +100,9 @@ class PFSenseAPIClient():
             response = requests.get(url=call_url, params=payload)
         elif method == "POST":
             response = requests.post(url=call_url, data=json.dumps(payload))
-        # else:
-            # response = requests.request(method=method, url=call_url, data=json.dumps(payload))
         else:
-            raise NotImplementedError(f"got method: {method}")
-        try:
-            response.raise_for_status()
-        except requests.exceptions.HTTPError as error:
-            print(f"Failed to call {call_url}: {error}")
-            print(response.content)
-            return False
+            response = requests.request(method=method, url=call_url, data=json.dumps(payload))
+        response.raise_for_status()
         return response
 
     def request_access_token(self):
@@ -125,11 +114,14 @@ class PFSenseAPIClient():
 
     get_firewall_rules = firewall.get_firewall_rules
 
-    get_system_api_error = system.get_system_api_error
 
     get_firewall_alias = firewall.get_firewall_alias
     create_firewall_alias = firewall.create_firewall_alias
     delete_firewall_alias = firewall.delete_firewall_alias
+
+    get_system_api_error = system.get_system_api_error
+    get_system_api_version = system.get_system_api_version
+    update_system_api_configuration = system.update_system_api_configuration
 
     def execute_shell_command(self, shell_cmd: str):
         """ execute a shell command on the firewall

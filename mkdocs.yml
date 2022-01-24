@@ -1,0 +1,19 @@
+# mkdocs.yml
+site_name: pfsense-api-client
+theme:
+ name: "material"
+
+plugins:
+- search:
+- mkdocstrings:
+    default_handler: python
+    handlers:
+      python:
+        rendering:
+          show_source: true
+    watch:
+    - "pfsense_api_client/"
+
+nav:
+  - "Home": README.md
+  - "API Documentation": api.md
