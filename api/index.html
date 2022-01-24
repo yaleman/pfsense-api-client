@@ -372,6 +372,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pfsense_api_client.PFSenseAPIClient.update_firewall_alias" class="md-nav__link">
+    update_firewall_alias()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pfsense_api_client.PFSenseAPIClient.update_system_api_configuration" class="md-nav__link">
     update_system_api_configuration()
   </a>
@@ -408,6 +415,13 @@
           <li class="md-nav__item">
   <a href="#pfsense_api_client.firewall.AliasTypes" class="md-nav__link">
     AliasTypes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfsense_api_client.firewall.FirewallAliasUpdate" class="md-nav__link">
+    FirewallAliasUpdate
   </a>
   
 </li>
@@ -513,6 +527,13 @@
           <li class="md-nav__item">
   <a href="#pfsense_api_client.firewall.get_virtual_ip" class="md-nav__link">
     get_virtual_ip()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfsense_api_client.firewall.update_firewall_alias" class="md-nav__link">
+    update_firewall_alias()
   </a>
   
 </li>
@@ -778,6 +799,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pfsense_api_client.PFSenseAPIClient.update_firewall_alias" class="md-nav__link">
+    update_firewall_alias()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pfsense_api_client.PFSenseAPIClient.update_system_api_configuration" class="md-nav__link">
     update_system_api_configuration()
   </a>
@@ -814,6 +842,13 @@
           <li class="md-nav__item">
   <a href="#pfsense_api_client.firewall.AliasTypes" class="md-nav__link">
     AliasTypes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfsense_api_client.firewall.FirewallAliasUpdate" class="md-nav__link">
+    FirewallAliasUpdate
   </a>
   
 </li>
@@ -919,6 +954,13 @@
           <li class="md-nav__item">
   <a href="#pfsense_api_client.firewall.get_virtual_ip" class="md-nav__link">
     get_virtual_ip()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfsense_api_client.firewall.update_firewall_alias" class="md-nav__link">
+    update_firewall_alias()
   </a>
   
 </li>
@@ -1145,9 +1187,10 @@ PFSenseAPIClient        </code>
     <span class="n">apply_firewall_changes</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">apply_firewall_changes</span>
     <span class="n">delete_all_firewall_rules</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">delete_all_firewall_rules</span> <span class="c1"># lol</span>
 
-    <span class="n">get_firewall_alias</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">get_firewall_alias</span>
     <span class="n">create_firewall_alias</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">create_firewall_alias</span>
     <span class="n">delete_firewall_alias</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">delete_firewall_alias</span>
+    <span class="n">get_firewall_alias</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">get_firewall_alias</span>
+    <span class="n">update_firewall_alias</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">update_firewall_alias</span>
 
     <span class="n">get_firewall_nat_one_to_one</span> <span class="o">=</span> <span class="n">firewall</span><span class="o">.</span><span class="n">get_firewall_nat_one_to_one</span>
 
@@ -1884,6 +1927,48 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-reques
 
 
 
+<h3 id="pfsense_api_client.PFSenseAPIClient.update_firewall_alias" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_firewall_alias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Modify an existing firewall alias.</p>
+<p>https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-aliases</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@pydantic</span><span class="o">.</span><span class="n">validate_arguments</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">update_firewall_alias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">FirewallAliasUpdate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Modify an existing firewall alias.</span>
+
+<span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-aliases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/firewall/alias&quot;</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">FirewallAliasUpdate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h3 id="pfsense_api_client.PFSenseAPIClient.update_system_api_configuration" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">update_system_api_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
@@ -2101,6 +2186,69 @@ AliasTypes            (<span title="str">str</span>, <span title="enum.Enum">Enu
 
 
   <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="pfsense_api_client.firewall.FirewallAliasUpdate" class="doc doc-heading">
+        <code>
+FirewallAliasUpdate            (<span title="pydantic.main.BaseModel">BaseModel</span>)
+        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-model"><code>pydantic-model</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>validating the firewall alias update </p>
+
+        <details class="quote">
+          <summary>Source code in <code>pfsense_api_client/firewall.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FirewallAliasUpdate</span><span class="p">(</span><span class="n">pydantic</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; validating the firewall alias update &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">AliasTypes</span>
+    <span class="n">descr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">address</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="n">detail</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="n">apply</span><span class="p">:</span> <span class="nb">bool</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
 
 
 
@@ -2639,6 +2787,48 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
 
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-virtual-ips&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;/api/v1/firewall/virtual_ip&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="pfsense_api_client.firewall.update_firewall_alias" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_firewall_alias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Modify an existing firewall alias.</p>
+<p>https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-aliases</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pfsense_api_client/firewall.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@pydantic</span><span class="o">.</span><span class="n">validate_arguments</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">update_firewall_alias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">FirewallAliasUpdate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Modify an existing firewall alias.</span>
+
+<span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-aliases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/firewall/alias&quot;</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">FirewallAliasUpdate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+        <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+        <span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
