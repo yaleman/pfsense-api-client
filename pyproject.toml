@@ -7,6 +7,18 @@ authors = [
 ]
 license = "MIT"
 
+readme = "README.md"
+homepage = "https://github.com/yaleman/pfsense-api-client/"
+repository = "https://github.com/yaleman/pfsense-api-client/"
+documentation = "https://yaleman.github.io/pfsense-api-client/"
+
+keywords = [
+    "pfsense",
+    "API",
+]
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
 [tool.poetry.dependencies]
 python = "^3.8"
 requests = "^2.27.1"
