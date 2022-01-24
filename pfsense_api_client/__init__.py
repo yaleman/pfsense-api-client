@@ -112,15 +112,32 @@ class PFSenseAPIClient():
         url = "/api/v1/access_token"
         return self.call(url=url, method="POST")
 
-    get_firewall_rules = firewall.get_firewall_rules
+    get_firewall_rule = firewall.get_firewall_rule
 
+    apply_firewall_changes = firewall.apply_firewall_changes
+    delete_all_firewall_rules = firewall.delete_all_firewall_rules # lol
 
     get_firewall_alias = firewall.get_firewall_alias
     create_firewall_alias = firewall.create_firewall_alias
     delete_firewall_alias = firewall.delete_firewall_alias
 
+    get_firewall_nat_one_to_one = firewall.get_firewall_nat_one_to_one
+
+    get_nat_outbound_mapping = firewall.get_nat_outbound_mapping
+
+    get_firewall_nat_port_forward = firewall.get_firewall_nat_port_forward
+
+    get_firewall_schedule = firewall.get_firewall_schedule
+    get_firewall_states = firewall.get_firewall_states
+    get_firewall_states_size = firewall.get_firewall_states_size
+
     get_system_api_error = system.get_system_api_error
     get_system_api_version = system.get_system_api_version
+
+    get_traffic_shaper_limiter = firewall.get_traffic_shaper_limiter
+
+    get_virtual_ip = firewall.get_virtual_ip
+
     update_system_api_configuration = system.update_system_api_configuration
 
     def execute_shell_command(self, shell_cmd: str):

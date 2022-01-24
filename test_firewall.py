@@ -13,13 +13,13 @@ def pfsense_api_client():
 
 def test_firewall_get_rules(pfsense: PFSenseAPIClient):
     """ tests getting rules """
-    data = pfsense.get_firewall_rules()
-    assert len(data) > 0
+    response = pfsense.get_firewall_rule()
+    assert len(response.json()) > 0
 
 def test_firewall_get_rules_interface_filter(pfsense: PFSenseAPIClient):
     """ tests getting rules """
-    wandata = pfsense.get_firewall_rules(interface="wan")
-    assert len(wandata) > 0
-    landata = pfsense.get_firewall_rules(interface="lan")
-    assert len(landata) > 0
+    wandata = pfsense.get_firewall_rule(interface="wan")
+    assert len(wandata.json()) > 0
+    landata = pfsense.get_firewall_rule(interface="lan")
+    assert len(landata.json()) > 0
     assert landata != wandata
