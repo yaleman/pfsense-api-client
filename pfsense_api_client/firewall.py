@@ -1,7 +1,7 @@
 """ firewall-rule related things """
 
 from enum import Enum
-from typing import List, Union
+from typing import List, Union, Optional
 
 import pydantic
 import requests
@@ -84,14 +84,34 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete
     method="DELETE"
     payload = { "id": name, "apply": apply}
     return self.call(url=url, method=method, payload=payload)
-# TODO: def update_firewall_alias(self, **filterargs) -> requests.Response:
-# """Modify an existing firewall alias.
-#
-#   https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-aliases
-# """
-# method = "PUT"
-# url = "/api/v1/firewall/alias"
 
+
+class FirewallAliasUpdate(pydantic.BaseModel):
+    """ validating the firewall alias update """
+    name: str
+    type: AliasTypes
+    descr: Optional[str]
+    address: Union[str, List[str]]
+    detail: Union[str, List[str]]
+    apply: bool
+
+@pydantic.validate_arguments()
+def update_firewall_alias(self, *args: FirewallAliasUpdate) -> requests.Response:
+    """Modify an existing firewall alias.
+
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-aliases
+    """
+    method = "PUT"
+    url = "/api/v1/firewall/alias"
+
+    payload = FirewallAliasUpdate(*args).dict()
+
+    raise NotImplementedError
+    return self.call(
+        url=url,
+        method=method,
+        payload=payload,
+        )
 
 # TODO: def create_firewall_alias_entry(self, **filterargs) -> requests.Response:
 # Add new entries to an existing firewall alias.

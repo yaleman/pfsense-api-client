@@ -117,9 +117,10 @@ class PFSenseAPIClient():
     apply_firewall_changes = firewall.apply_firewall_changes
     delete_all_firewall_rules = firewall.delete_all_firewall_rules # lol
 
-    get_firewall_alias = firewall.get_firewall_alias
     create_firewall_alias = firewall.create_firewall_alias
     delete_firewall_alias = firewall.delete_firewall_alias
+    get_firewall_alias = firewall.get_firewall_alias
+    update_firewall_alias = firewall.update_firewall_alias
 
     get_firewall_nat_one_to_one = firewall.get_firewall_nat_one_to_one
 
