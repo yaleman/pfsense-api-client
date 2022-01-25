@@ -3,8 +3,7 @@
 from typing import List, Optional
 
 import pydantic
-
-# TODO: url = "/api/v1/system/api/error"
+import requests
 
 def get_system_api_error(self):
     """ gets the list of error codes
@@ -52,20 +51,102 @@ def update_system_api_configuration(self, **kwargs):
 
     return self.call(url, method, payload=payload.dict())
 
-# TODO: url = "/api/v1/system/api"
+
+def get_system_api_configuration(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-api-configuration """
+
+def get_system_api_error_library(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-system-api-error-library """
+
+def delete_system_arp_table(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-delete-system-arp-table """
+
+def get_system_arp_table(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-system-arp-table """
 
 
-# TODO: url = "/api/v1/system/arp"
-# TODO: url = "/api/v1/system/ca"
-# TODO: url = "/api/v1/system/certificate"
-# TODO: url = "/api/v1/system/config"
-# TODO: url = "/api/v1/system/console"
-# TODO: url = "/api/v1/system/dns"
-# TODO: url = "/api/v1/system/dns/server"
-# TODO: url = "/api/v1/system/halt"
-# TODO: url = "/api/v1/system/hostname"
-# TODO: url = "/api/v1/system/notifications/email"
-# TODO: url = "/api/v1/system/reboot"
-# TODO: url = "/api/v1/system/table"
-# TODO: url = "/api/v1/system/tunable"
-# TODO: url = "/api/v1/system/version"
+def create_system_ca(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-ca """
+
+def delete_system_ca(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-ca """
+
+def get_system_cas(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-cas """
+
+
+def create_system_certificates(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-certificates """
+
+def delete_system_certificates(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-certificates """
+
+def get_system_certificates(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-certificates """
+
+
+def get_system_configuration(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-configuration """
+
+def update_system_configuration(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-configuration """
+
+
+def update_console_settings(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-update-console-settings """
+
+
+def get_system_dns(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-dns """
+
+def update_system_dns(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-dns """
+
+
+def create_system_dns_server(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-dns-server """
+
+def delete_system_dns_server(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-dns-server """
+
+
+def halt_system(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-halt-system """
+
+
+def get_system_hostname(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-hostname """
+
+def update_system_hostname(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-hostname """
+
+
+def get_system_email_notification_settings(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-email-notification-settings """
+
+def update_system_email_notification_settings(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-email-notification-settings """
+
+
+def create_system_reboot(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-reboot """
+
+
+def get_system_tables(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-tables """
+
+
+def create_system_tunables(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-tunables """
+
+def delete_system_tunables(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-tunables """
+
+def get_system_tunables(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-tunables """
+
+def update_system_tunables(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-system-tunables """
+
+def get_system_version(self, **args) -> requests.Response:
+    """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-version """
