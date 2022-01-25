@@ -52,17 +52,23 @@ def update_system_api_configuration(self, **kwargs):
     return self.call(url, method, payload=payload.dict())
 
 
-def get_system_api_configuration(self, **args) -> requests.Response:
+def get_system_api_configuration(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-api-configuration """
+    url=""
+    return self.call(url, payload=filterargs)
 
-def get_system_api_error_library(self, **args) -> requests.Response:
+def get_system_api_error_library(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-system-api-error-library """
+    url=""
+    return self.call(url, payload=filterargs)
 
 def delete_system_arp_table(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-delete-system-arp-table """
 
-def get_system_arp_table(self, **args) -> requests.Response:
+def get_system_arp_table(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-system-arp-table """
+    url=""
+    return self.call(url, payload=filterargs)
 
 
 def create_system_ca(self, **args) -> requests.Response:
@@ -71,9 +77,10 @@ def create_system_ca(self, **args) -> requests.Response:
 def delete_system_ca(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-ca """
 
-def get_system_cas(self, **args) -> requests.Response:
+def get_system_cas(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-cas """
-
+    url=""
+    return self.call(url, payload=filterargs)
 
 def create_system_certificates(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-certificates """
@@ -81,12 +88,15 @@ def create_system_certificates(self, **args) -> requests.Response:
 def delete_system_certificates(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-certificates """
 
-def get_system_certificates(self, **args) -> requests.Response:
+def get_system_certificates(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-certificates """
+    url=""
+    return self.call(url, payload=filterargs)
 
-
-def get_system_configuration(self, **args) -> requests.Response:
+def get_system_configuration(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-configuration """
+    url=""
+    return self.call(url, payload=filterargs)
 
 def update_system_configuration(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-configuration """
@@ -96,8 +106,10 @@ def update_console_settings(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-update-console-settings """
 
 
-def get_system_dns(self, **args) -> requests.Response:
+def get_system_dns(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-dns """
+    url=""
+    return self.call(url, payload=filterargs)
 
 def update_system_dns(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-dns """
@@ -114,15 +126,18 @@ def halt_system(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-halt-system """
 
 
-def get_system_hostname(self, **args) -> requests.Response:
+def get_system_hostname(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-hostname """
-
+    url=""
+    return self.call(url, payload=filterargs)
 def update_system_hostname(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-hostname """
 
 
-def get_system_email_notification_settings(self, **args) -> requests.Response:
+def get_system_email_notification_settings(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-email-notification-settings """
+    url=""
+    return self.call(url, payload=filterargs)
 
 def update_system_email_notification_settings(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-email-notification-settings """
@@ -132,8 +147,10 @@ def create_system_reboot(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-reboot """
 
 
-def get_system_tables(self, **args) -> requests.Response:
+def get_system_tables(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-tables """
+    url=""
+    return self.call(url, payload=filterargs)
 
 
 def create_system_tunables(self, **args) -> requests.Response:
@@ -142,11 +159,15 @@ def create_system_tunables(self, **args) -> requests.Response:
 def delete_system_tunables(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-tunables """
 
-def get_system_tunables(self, **args) -> requests.Response:
+def get_system_tunables(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-tunables """
+    url=""
+    return self.call(url, payload=filterargs)
 
 def update_system_tunables(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-system-tunables """
 
-def get_system_version(self, **args) -> requests.Response:
+def get_system_version(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-version """
+    url=""
+    return self.call(url, payload=filterargs)

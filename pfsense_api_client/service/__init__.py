@@ -3,8 +3,10 @@
 import requests
 
 
-def get_service(self, **args) -> requests.Response:
+def get_service(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-services """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def restart_all_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-all-services """
@@ -16,12 +18,16 @@ def stop_all_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-stop-all-services """
 
 
-def get_dynamic_dns(self, **args) -> requests.Response:
+def get_dynamic_dns(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dynamic-dns """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 
-def get_dhcpd_service_configuration(self, **args) -> requests.Response:
+def get_dhcpd_service_configuration(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dhcpd-service-configuration """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def restart_dhcpd_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-dhcpd-service_"""
@@ -36,8 +42,10 @@ def update_dhcpd_service_configuration(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-update-dhcpd-service-configuration """
 
 
-def get_dhcpd_leases(self, **args) -> requests.Response:
+def get_dhcpd_leases(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dhcpd-leases """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 
 def create_dhcpd_static_mappings(self, **args) -> requests.Response:
@@ -46,8 +54,10 @@ def create_dhcpd_static_mappings(self, **args) -> requests.Response:
 def delete_dhcpd_static_mappings(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-dhcpd-static-mappings """
 
-def get_dhcpd_static_mappings(self, **args) -> requests.Response:
+def get_dhcpd_static_mappings(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-dhcpd-static-mappings """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def update_dhcpd_static_mappings(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-dhcpd-static-mappings """
@@ -56,8 +66,10 @@ def update_dhcpd_static_mappings(self, **args) -> requests.Response:
 def apply_pending_dnsmasq_changes(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-apply-pending-dnsmasq-changes """
 
-def get_dnsmasq_configuration(self, **args) -> requests.Response:
+def get_dnsmasq_configuration(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-dnsmasq-configuration """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def restart_dnsmasq_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-restart-dnsmasq-service_"""
@@ -75,8 +87,10 @@ def create_dnsmasq_host_override(self, **args) -> requests.Response:
 def delete_dnsmasq_host_override(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-dnsmasq-host-override """
 
-def get_dnsmasq_host_override(self, **args) -> requests.Response:
+def get_dnsmasq_host_override(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-dnsmasq-host-override """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def update_dnsmasq_host_override(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-dnsmasq-host-override """
@@ -95,8 +109,10 @@ def start_dpinger_service(self, **args) -> requests.Response:
 def stop_dpinger_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-stop-dpinger-service_"""
 
-def get_ntpd_service(self, **args) -> requests.Response:
+def get_ntpd_service(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-ntpd-service_"""
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def restart_ntpd_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-ntpd-service_"""
@@ -124,15 +140,19 @@ def create_openvpn_client_specific_overrides(self, **args) -> requests.Response:
 def delete_openvpn_client_specific_override(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-openvpn-client-specific-override """
 
-def get_openvpn_client_specific_overrides(self, **args) -> requests.Response:
+def get_openvpn_client_specific_overrides(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-openvpn-client-specific-overrides """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def update_openvpn_client_specific_overrides(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-openvpn-client-specific-overrides """
 
 
-def get_sshd_configuration(self, **args) -> requests.Response:
+def get_sshd_configuration(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-sshd-configuration """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def restart_sshd_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-sshd-service_"""
@@ -160,8 +180,10 @@ def stop_syslogd_service(self, **args) -> requests.Response:
 def apply_pending_unbound_changes(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-apply-pending-unbound-changes """
 
-def get_unbound_configuration(self, **args) -> requests.Response:
+def get_unbound_configuration(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-unbound-configuration """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def restart_unbound_service(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-restart-unbound-service_"""
@@ -179,8 +201,10 @@ def create_unbound_access_list(self, **args) -> requests.Response:
 def delete_unbound_access_list(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-unbound-access-list """
 
-def get_unbound_access_lists(self, **args) -> requests.Response:
+def get_unbound_access_lists(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-unbound-access-lists """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def update_unbound_access_list(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-unbound-access-list """
@@ -196,8 +220,10 @@ def create_unbound_host_override(self, **args) -> requests.Response:
 def delete_unbound_host_override(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-unbound-host-override """
 
-def get_unbound_host_override(self, **args) -> requests.Response:
+def get_unbound_host_override(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-unbound-host-override """
+    url = ""
+    return self.call(url, payload=filterargs)
 
 def update_unbound_host_override(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-unbound-host-override """

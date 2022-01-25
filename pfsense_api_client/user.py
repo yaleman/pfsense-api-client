@@ -9,8 +9,11 @@ def create_users(self, **args) -> requests.Response:
 def delete_users(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-users """
 
-def get_users(self, **args) -> requests.Response:
+def get_users(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-users """
+    url = "/api/v1/user"
+    return self.call(url, params=filterargs)
+
 
 def update_users(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-users """
@@ -31,14 +34,20 @@ def delete_ldap_auth_servers(self, **args) -> requests.Response:
 def delete_radius_auth_servers(self, **args) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-delete-radius-auth-servers """
 
-def get_auth_servers(self, **args) -> requests.Response:
+def get_auth_servers(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#6-read-auth-servers """
+    url=""
+    return self.call(url, payload=filterargs)
 
-def get_ldap_auth_servers(self, **args) -> requests.Response:
+def get_ldap_auth_servers(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#7-read-ldap-auth-servers """
+    url=""
+    return self.call(url, payload=filterargs)
 
-def get_radius_auth_servers(self, **args) -> requests.Response:
+def get_radius_auth_servers(self, *filterargs) -> requests.Response:
     """ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#8-read-radius-auth-servers """
+    url=""
+    return self.call(url, payload=filterargs)
 
 
 def create_user_group(self, **args) -> requests.Response:
