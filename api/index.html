@@ -5425,7 +5425,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete
 
 
 <h3 id="pfsense_api_client.firewall.delete_firewall_rule" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">delete_firewall_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">apply</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">delete_firewall_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">apply</span><span class="p">)</span></code>
 
 
 </h3>
@@ -5437,14 +5437,19 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/firewall.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_firewall_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">apply</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">],</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <div class="highlight"><pre><span></span><code><span class="nd">@pydantic</span><span class="o">.</span><span class="n">validate_arguments</span>
+<span class="k">def</span> <span class="nf">delete_firewall_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">apply</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; Delete firewall rules</span>
 
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-firewall-rules</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/firewall/rule&quot;</span>
     <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="n">payload</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="n">name</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="n">apply</span><span class="p">:</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;apply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
