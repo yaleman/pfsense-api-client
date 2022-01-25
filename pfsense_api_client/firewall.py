@@ -108,21 +108,22 @@ def update_firewall_alias(self, *args: FirewallAliasUpdate) -> requests.Response
 
     return self.call(url=url,method=method,payload=payload)
 
-# TODO: def create_firewall_alias_entry(self, **filterargs) -> requests.Response:
-# Add new entries to an existing firewall alias.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-firewall-alias-entries
+def create_firewall_alias_entry(self, *args) -> requests.Response:
+    """Add new entries to an existing firewall alias.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-firewall-alias-entries
+    """
 
-# method = "POST"
-# url = "/api/v1/firewall/alias/entry"
+    method = "POST"
+    url = "/api/v1/firewall/alias/entry"
+    return self.call(url=url,method=method,payload=args)
 
 
-# TODO: Delete Firewall Alias Entries
-
-# Delete existing entries from an existing firewall alias.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-firewall-alias-entries
-
-# method = "DELETE"
-# url = "/api/v1/firewall/alias/entry"
+def delete_firewall_alias_entry(self, **args) -> requests.Response:
+    """Delete existing entries from an existing firewall alias.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-firewall-alias-entries"""
+    method = "DELETE"
+    url = "/api/v1/firewall/alias/entry"
+    return self.call(url=url,method=method,payload=args)
 
 def apply_firewall_changes(self) -> requests.Response:
     """Apply pending firewall changes. This will reload all filter items. This endpoint returns no data.
@@ -135,23 +136,26 @@ def apply_firewall_changes(self) -> requests.Response:
     return self.call(url, method)
 
 
-# create_firewall_nat_one_to_one
-# Add a new NAT 1:1 Mapping.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-nat-1-to-1-mappings
-# method = "POST"
-# url = "/api/v1/firewall/nat/one_to_one"
+def create_firewall_nat_one_to_one(self, **args) -> requests.Response:
+    """Add a new NAT 1:1 Mapping.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-nat-1-to-1-mappings"""
+    method = "POST"
+    url = "/api/v1/firewall/nat/one_to_one"
+    return self.call(url=url,method=method,payload=args)
 
-# delete_firewall_nat_one_to_one
-# Delete a NAT 1:1 Mapping.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-nat-1-to-1-mappings
-# method = "DELETE"
-# url = "/api/v1/firewall/nat/one_to_one"
+def delete_firewall_nat_one_to_one(self, **args) -> requests.Response:
+    """Delete a NAT 1:1 Mapping.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-nat-1-to-1-mappings"""
+    method = "DELETE"
+    url = "/api/v1/firewall/nat/one_to_one"
+    return self.call(url=url,method=method,payload=args)
 
-# update_firewall_nat_one_to_one
-# Update a NAT 1:1 Mapping.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-nat-1-to-1-mappings
-# method = "PUT"
-# url = "/api/v1/firewall/nat/one_to_one"
+def update_firewall_nat_one_to_one(self, **args) -> requests.Response:
+    """Update a NAT 1:1 Mapping.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-nat-1-to-1-mappings"""
+    method = "PUT"
+    url = "/api/v1/firewall/nat/one_to_one"
+    return self.call(url=url,method=method,payload=args)
 
 def get_firewall_nat_one_to_one(self, **filterargs) -> requests.Response:
     """Read 1:1 NAT mappings.
@@ -161,27 +165,30 @@ def get_firewall_nat_one_to_one(self, **filterargs) -> requests.Response:
     url = "/api/v1/firewall/nat/one_to_one"
     return self.call(url, payload=filterargs)
 
-# TODO: def update_nat_outbound_settings(self, **filterargs) -> requests.Response:
-# mode: str, apply: Optional[bool]
-# Update outbound NAT mode settings.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-outbound-nat-settings
-# method = "PUT"
-# url = "/api/v1/firewall/nat/outbound"
+def update_nat_outbound_settings(self, **args) -> requests.Response:
+    """mode: str, apply: Optional[bool]
+    Update outbound NAT mode settings.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-outbound-nat-settings"""
+    method = "PUT"
+    url = "/api/v1/firewall/nat/outbound"
+    return self.call(url, method=method, payload=args)
 
 
-# TODO: def create_outbound_nat_mapping(self, **filterargs) -> requests.Response:
-# Create new outbound NAT mappings.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-outbound-nat-mappings
-# method = "POST"
-# url = "/api/v1/firewall/nat/outbound/mapping"
+def create_outbound_nat_mapping(self, **args) -> requests.Response:
+    """Create new outbound NAT mappings.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-outbound-nat-mappings"""
+    method = "POST"
+    url = "/api/v1/firewall/nat/outbound/mapping"
+    return self.call(url, method=method, payload=args)
 
-# TODO: def delete_outbound_nat_mapping(self, **filterargs) -> requests.Response:
-# name: str
-# apply: Optional[bool]
-# Delete outbound NAT mappings.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-outbound-nat-mappings
-# method = "DELETE"
-# url = "/api/v1/firewall/nat/outbound/mapping"
+def delete_outbound_nat_mapping(self, **args) -> requests.Response:
+    """name: str
+    apply: Optional[bool]
+    Delete outbound NAT mappings.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-outbound-nat-mappings"""
+    method = "DELETE"
+    url = "/api/v1/firewall/nat/outbound/mapping"
+    return self.call(url, method=method, payload=args)
 
 
 def get_nat_outbound_mapping(self, **filterargs) -> requests.Response:
@@ -193,25 +200,28 @@ def get_nat_outbound_mapping(self, **filterargs) -> requests.Response:
     return self.call(url, payload=filterargs)
 
 
-# TODO: def update_outbound_nat_mapping(self, **filterargs) -> requests.Response:
-# Update existing outbound NAT mappings.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-outbound-nat-mappings
-# method = "PUT"
-# url = "/api/v1/firewall/nat/outbound/mapping"
+def update_outbound_nat_mapping(self, **args) -> requests.Response:
+    """Update existing outbound NAT mappings.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-outbound-nat-mappings"""
+    method = "PUT"
+    url = "/api/v1/firewall/nat/outbound/mapping"
+    return self.call(url=url,method=method,payload=args)
 
 
-# TODO: def create_nat_port_forward(self, **filterargs) -> requests.Response:
-# Add a new NAT port forward rule.
-# method = "POST"
-# url = "/api/v1/firewall/nat/port_forward"
+def create_nat_port_forward(self, **args) -> requests.Response:
+    """Add a new NAT port forward rule."""
+    url = "/api/v1/firewall/nat/port_forward"
+    method = "POST"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_nat_port_forward(self, **filterargs) -> requests.Response:
+def delete_nat_port_forward(self, **args) -> requests.Response:
+    """Delete a NAT port forward rule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-nat-port-forwards"""
 # name: str
 # apply: Optional[bool]
-# Delete a NAT port forward rule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-nat-port-forwards
-# method = "DELETE"
-# url = "/api/v1/firewall/nat/port_forward"
+    url = "/api/v1/firewall/nat/port_forward"
+    method = "DELETE"
+    return self.call(url=url,method=method,payload=args)
 
 
 def get_firewall_nat_port_forward(self, **filterargs) -> requests.Response:
@@ -222,13 +232,12 @@ def get_firewall_nat_port_forward(self, **filterargs) -> requests.Response:
     return self.call(url, payload=filterargs)
 
 
-# TODO: def update_nat_port_forward(self, **filterargs) -> requests.Response:
-# Update a NAT port forward rule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-nat-port-forwards
-# method = "PUT"
-# url = "/api/v1/firewall/nat/port_forward"
-
-# TODO: url = "/api/v1/firewall/nat/port_forward"
+def update_nat_port_forward(self, **args) -> requests.Response:
+    """Update a NAT port forward rule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-nat-port-forwards"""
+    method = "PUT"
+    url = "/api/v1/firewall/nat/port_forward"
+    return self.call(url=url,method=method,payload=args)
 
 # pylint: disable=line-too-long
 def delete_all_firewall_rules(self):
@@ -242,43 +251,46 @@ def delete_all_firewall_rules(self):
     method = "DELETE"
     self.call(url=url, method=method)
 
-# TODO: def create_firewall_schedule(self, **filterargs) -> requests.Response:
-# Add a firewall schedule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-schedule
-# method = "POST"
-# url = "/api/v1/firewall/schedule"
+def create_firewall_schedule(self, **args) -> requests.Response:
+    """Add a firewall schedule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-schedule"""
+    url = "/api/v1/firewall/schedule"
+    method = "POST"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_firewall_schedule(self, **filterargs) -> requests.Response:
-# Delete a firewall schedule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-schedule
-# method = "DELETE"
-# url = "/api/v1/firewall/schedule"
+def delete_firewall_schedule(self, **args) -> requests.Response:
+    """Delete a firewall schedule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-schedule"""
+    method = "DELETE"
+    url = "/api/v1/firewall/schedule"
+    return self.call(url=url,method=method,payload=args)
 
 def get_firewall_schedule(self, **filterargs) -> requests.Response:
     """Read all existing firewall schedules.
-
-
     """
     url = "/api/v1/firewall/schedule"
     return self.call(url, payload=filterargs)
 
-# TODO: def update_firewall_schedule(self, **filterargs) -> requests.Response:
-# Update a firewall schedule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-schedule
-# method = "PUT"
-# url = "/api/v1/firewall/schedule"
+def update_firewall_schedule(self, **args) -> requests.Response:
+    """Update a firewall schedule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-schedule"""
+    method = "PUT"
+    url = "/api/v1/firewall/schedule"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def create_schedule_time_range(self, **filterargs) -> requests.Response:
-#  Add a time range to an existing firewall schedule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-schedule-time-range
-# method = "POST"
-# url = "/api/v1/firewall/schedule/time_range"
+def create_schedule_time_range(self, **args) -> requests.Response:
+    """ Add a time range to an existing firewall schedule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-schedule-time-range"""
+    method = "POST"
+    url = "/api/v1/firewall/schedule/time_range"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_schedule_time_range(self, **filterargs) -> requests.Response:
-#  Delete a time range from an existing firewall schedule.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-schedule-time-range
-# method = "DELETE"
-# url = "/api/v1/firewall/schedule/time_range"
+def delete_schedule_time_range(self, **args) -> requests.Response:
+    """ Delete a time range from an existing firewall schedule.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-schedule-time-range"""
+    method = "DELETE"
+    url = "/api/v1/firewall/schedule/time_range"
+    return self.call(url=url,method=method,payload=args)
 
 def get_firewall_states(self, **filterargs) -> requests.Response:
     """Read the current firewall states.
@@ -297,27 +309,30 @@ def get_firewall_states_size(self, **filterargs) -> requests.Response:
     return self.call(url, payload=filterargs)
 
 
-# TODO: def update_firewall_state_size(self, **filterargs) -> requests.Response:
-# Modify the maximum number of firewall state table entries allowed by the system
-# Note: use caution when making this call, setting the maximum state table size to a value lower than the current number of firewall state entries WILL choke the system
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-firewall-state-size
+def update_firewall_state_size(self, **args) -> requests.Response:
+    """Modify the maximum number of firewall state table entries allowed by the system
+    Note: use caution when making this call, setting the maximum state table size to a value lower than the current number of firewall state entries WILL choke the system
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-firewall-state-size"""
 
 # TODO: Add a check for current states > state size and require the user to pass force=True if they want to bypass the state check
-# method = "PUT"
-# url = "/api/v1/firewall/states/size"
+    method = "PUT"
+    url = "/api/v1/firewall/states/size"
+    return self.call(url=url,method=method,payload=args)
 
 
-# TODO: def create_traffic_shaper(self, **filterargs) -> requests.Response:
-# Add a traffic shaper policy to an interface.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-traffic-shaper
-# method = "POST"
-# url = "/api/v1/firewall/traffic_shaper"
+def create_traffic_shaper(self, **args) -> requests.Response:
+    """Add a traffic shaper policy to an interface.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-traffic-shaper"""
+    method = "POST"
+    url = "/api/v1/firewall/traffic_shaper"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_traffic_shaper(self, **filterargs) -> requests.Response:
-# Delete a traffic shaper policy from an interface.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-traffic-shaper
-# method = "DELETE"
-# url = "/api/v1/firewall/traffic_shaper"
+def delete_traffic_shaper(self, **args) -> requests.Response:
+    """Delete a traffic shaper policy from an interface.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-traffic-shaper"""
+    method = "DELETE"
+    url = "/api/v1/firewall/traffic_shaper"
+    return self.call(url=url,method=method,payload=args)
 
 
 def get_traffic_shaper(self, **filterargs) -> requests.Response:
@@ -328,23 +343,26 @@ def get_traffic_shaper(self, **filterargs) -> requests.Response:
     url = "/api/v1/firewall/traffic_shaper"
     return self.call(url, payload=filterargs)
 
-# TODO: def update_traffic_shaper(self, **filterargs) -> requests.Response:
-# Update a traffic shaper policy for an interface.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-traffic-shaper
-# method = "PUT"
-# url = "/api/v1/firewall/traffic_shaper"
+def update_traffic_shaper(self, **args) -> requests.Response:
+    """Update a traffic shaper policy for an interface.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-traffic-shaper"""
+    url = "/api/v1/firewall/traffic_shaper"
+    method = "PUT"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def create_traffic_shaper_limiter(self, **filterargs) -> requests.Response:
-# Add a traffic shaper limiter.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-limiter
-# method = "POST"
-# url = "/api/v1/firewall/traffic_shaper/limiter"
+def create_traffic_shaper_limiter(self, **args) -> requests.Response:
+    """Add a traffic shaper limiter.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-limiter"""
+    url = "/api/v1/firewall/traffic_shaper/limiter"
+    method = "POST"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_traffic_shaper_limiter(self, **filterargs) -> requests.Response:
-# Add a traffic shaper limiter.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-limiter
-# method = "POST"
-# url = "/api/v1/firewall/traffic_shaper/limiter"
+def delete_traffic_shaper_limiter(self, **args) -> requests.Response:
+    """Add a traffic shaper limiter.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-limiter"""
+    method = "POST"
+    url = "/api/v1/firewall/traffic_shaper/limiter"
+    return self.call(url=url,method=method,payload=args)
 
 def get_traffic_shaper_limiter(self, **filterargs) -> requests.Response:
     """Get the traffic shaper limiters
@@ -353,60 +371,62 @@ def get_traffic_shaper_limiter(self, **filterargs) -> requests.Response:
     url = "/api/v1/firewall/traffic_shaper/limiter"
     return self.call(url, payload=filterargs)
 
-# TODO: def create_limiter_bandwidth(self, **filterargs) -> requests.Response:
-# Create a limiter bandwidth setting.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-limiter-bandwidth
-# method = "POST"
-# url = "/api/v1/firewall/traffic_shaper/limiter/bandwidth"
+def create_limiter_bandwidth(self, **args) -> requests.Response:
+    """Create a limiter bandwidth setting.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-limiter-bandwidth"""
+    method = "POST"
+    url = "/api/v1/firewall/traffic_shaper/limiter/bandwidth"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_limiter_bandwidth(self, **filterargs) -> requests.Response:
-# Delete a limiter bandwidth setting.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-limiter-bandwidth
-# method = "DELETE"
-# url = "/api/v1/firewall/traffic_shaper/limiter/bandwidth"
+def delete_limiter_bandwidth(self, **args) -> requests.Response:
+    """Delete a limiter bandwidth setting.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-limiter-bandwidth"""
+    method = "DELETE"
+    url = "/api/v1/firewall/traffic_shaper/limiter/bandwidth"
+    return self.call(url=url,method=method,payload=args)
 
 
-# TODO: def create_limiter_queue(self, **filterargs) -> requests.Response:
-# Add a child queue to an existing traffic shaper limiter
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-limiter-queue
-# method = "POST"
-# url = "/api/v1/firewall/traffic_shaper/limiter/queue"
+def create_limiter_queue(self, **args) -> requests.Response:
+    """Add a child queue to an existing traffic shaper limiter
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-limiter-queue"""
+    method = "POST"
+    url = "/api/v1/firewall/traffic_shaper/limiter/queue"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_limiter_queue(self, **filterargs) -> requests.Response:
-# Delete a child queue from an existing traffic shaper limiter
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-limiter-queue
-# method = "DELETE"
-# url = "/api/v1/firewall/traffic_shaper/limiter/queue"
+def delete_limiter_queue(self, **args) -> requests.Response:
+    """Delete a child queue from an existing traffic shaper limiter
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-limiter-queue"""
+    method = "DELETE"
+    url = "/api/v1/firewall/traffic_shaper/limiter/queue"
+    return self.call(url, method=method, payload=args)
 
-# TODO: def create_firewall_rule(self, **filterargs) -> requests.Response:
-# def create_firewall_rule(self, **args) -> requests.Response:
-#     """ Create firewall rules
 
-#     https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-rules
-#     """
-#     url = "/api/v1/firewall/rule"
-#     method = "POST"
-#     return self.call(url=url, payload=args)
+def create_firewall_rule(self, **args) -> requests.Response:
+    """Create firewall rules
 
-# TODO: def delete_firewall_rule(self, **filterargs) -> requests.Response:
-# def delete_firewall_rule(self, name: str, apply: Optional[bool]) -> requests.Response:
-#     """ Delete firewall rules
+        https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-rules"""
+    url = "/api/v1/firewall/rule"
+    method = "POST"
+    return self.call(url=url, method=method, payload=args)
 
-#     https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-firewall-rules
-#     """
-#     url = "/api/v1/firewall/rule"
-#     method = "DELETE"
-#     return self.call(url=url, payload=args)
 
-# TODO: def update_firewall_rule(self, **filterargs) -> requests.Response:
-# def update_firewall_rule(self, name: str, apply: Optional[bool]) -> requests.Response:
-#     """ Update firewall rules
+def delete_firewall_rule(self, name: str, apply: Optional[bool], **args) -> requests.Response:
+    """ Delete firewall rules
 
-#     https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-rules
-#     """
-#     url = "/api/v1/firewall/rule"
-#     method = "PUT"
-#     return self.call(url=url, payload=args)
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-firewall-rules
+    """
+    url = "/api/v1/firewall/rule"
+    method = "DELETE"
+    return self.call(url=url, method=method, payload=args)
+
+def update_firewall_rule(self, **args) -> requests.Response:
+    """ Update firewall rules
+
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-firewall-rules
+    """
+    url = "/api/v1/firewall/rule"
+    method = "PUT"
+    return self.call(url=url, method=method, payload=args)
 
 
 def get_firewall_rule(self, **filterargs) -> requests.Response:
@@ -418,30 +438,34 @@ def get_firewall_rule(self, **filterargs) -> requests.Response:
     return self.call(url=url, payload=filterargs)
 
 
-# TODO: def create_traffic_shaper_queue(self, **filterargs) -> requests.Response:
-# Add a queue to an traffic shaper interface.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-traffic-shaper-queue
-# Method: POST
-# URL: https://{{$hostname}}/api/v1/firewall/traffic_shaper/queue
+def create_traffic_shaper_queue(self, **args) -> requests.Response:
+    """Add a queue to an traffic shaper interface.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-traffic-shaper-queue"""
+    method = "POST"
+    url = "https://{{$hostname}}/api/v1/firewall/traffic_shaper/queue"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_traffic_shaper_queue(self, **filterargs) -> requests.Response:
-# Delete a queue from an traffic shaper interface.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-traffic-shaper-queue
-# Method: DELETE
-# URL: https://{{$hostname}}/api/v1/firewall/traffic_shaper/queue
+def delete_traffic_shaper_queue(self, **args) -> requests.Response:
+    """Delete a queue from an traffic shaper interface.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-traffic-shaper-queue"""
+    method = "DELETE"
+    url = "https://{{$hostname}}/api/v1/firewall/traffic_shaper/queue"
+    return self.call(url=url,method=method,payload=args)
 
 
-# TODO: def create_virtual_ip(self, **filterargs) -> requests.Response:
-# Add a new virtual IP.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-virtual-ips
-# Method: POST
-# URL: https://{{$hostname}}/api/v1/firewall/virtual_ip
+def create_virtual_ip(self, **args) -> requests.Response:
+    """Add a new virtual IP.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-virtual-ips"""
+    method = "POST"
+    url = "https://{{$hostname}}/api/v1/firewall/virtual_ip"
+    return self.call(url=url,method=method,payload=args)
 
-# TODO: def delete_virtual_ip(self, **filterargs) -> requests.Response:
-# Delete a virtual IP.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-virtual-ips
-# Method: DELETE
-# URL: https://{{$hostname}}/api/v1/firewall/virtual_ip
+def delete_virtual_ip(self, **args) -> requests.Response:
+    """Delete a virtual IP.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-virtual-ips"""
+    method = "DELETE"
+    url = "https://{{$hostname}}/api/v1/firewall/virtual_ip"
+    return self.call(url=url,method=method,payload=args)
 
 def get_virtual_ip(self, **filterargs) -> requests.Response:
     """ Read virtual IP assignments.
@@ -449,8 +473,9 @@ def get_virtual_ip(self, **filterargs) -> requests.Response:
     https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-virtual-ips"""
     return self.call("/api/v1/firewall/virtual_ip", payload=filterargs)
 
-# TODO: def update_virtual_ip(self, **filterargs) -> requests.Response:
-# Update a virtual IP.
-# https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-virtual-ips
-# Method: PUT
-# URL: https://{{$hostname}}/api/v1/firewall/virtual_ip
+def update_virtual_ip(self, **args) -> requests.Response:
+    """Update a virtual IP.
+    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-virtual-ips"""
+    method = "PUT"
+    url = "https://{{$hostname}}/api/v1/firewall/virtual_ip"
+    return self.call(url=url,method=method,payload=args)
