@@ -1,7 +1,7 @@
 """ firewall-rule related things """
 
 from enum import Enum
-from typing import List, Union, Optional
+from typing import Dict, List, Union, Optional
 
 import pydantic
 import requests
@@ -410,14 +410,19 @@ def create_firewall_rule(self, **args) -> requests.Response:
     return self.call(url=url, method=method, payload=args)
 
 
-def delete_firewall_rule(self, name: str, apply: Optional[bool], **args) -> requests.Response:
+@pydantic.validate_arguments
+def delete_firewall_rule(self, name: str, apply: Optional[bool]) -> requests.Response:
     """ Delete firewall rules
 
     https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-firewall-rules
     """
     url = "/api/v1/firewall/rule"
     method = "DELETE"
-    return self.call(url=url, method=method, payload=args)
+
+    payload: Dict[str, Union[str, bool]] = {"name" : name }
+    if apply:
+        payload["apply"] = apply
+    return self.call(url=url, method=method, payload=payload)
 
 def update_firewall_rule(self, **args) -> requests.Response:
     """ Update firewall rules
