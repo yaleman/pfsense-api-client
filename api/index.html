@@ -3973,12 +3973,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-reques
 
     <span class="n">payload</span> <span class="o">=</span> <span class="n">FirewallAliasUpdate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
 
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
-        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
-        <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
-        <span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -4845,12 +4840,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
 
     <span class="n">payload</span> <span class="o">=</span> <span class="n">FirewallAliasUpdate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
 
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
-        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
-        <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
-        <span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -4901,7 +4891,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
 
 
 <h3 id="pfsense_api_client.interface.apply_interfaces" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">apply_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">apply_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
 
 </h3>
@@ -4912,8 +4902,11 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-apply-interfaces &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/apply&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -4940,6 +4933,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_interface_bridges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-interface-bridges &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/bridge&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -4966,6 +4962,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_interface_vlan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-interface-vlans &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/vlan&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -4992,6 +4991,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-interfaces &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5018,6 +5020,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_interface_bridge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-interface-bridges &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/bridge&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5044,6 +5049,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_interface_vlan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-interface-vlans &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/vlan&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5070,6 +5078,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-interfaces &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5096,7 +5107,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_interface_bridge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-interface-bridges &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/bridge&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -5124,7 +5135,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_interface_vlan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-interface-vlans &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/vlan&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -5152,7 +5163,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-interfaces &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -5180,6 +5191,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_interface_bridge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-interface-bridges &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/bridge&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5206,6 +5220,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_interface_vlan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-interface-vlans &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface/vlan&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5232,6 +5249,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/interface.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-interfaces &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/interface&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5295,6 +5315,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_routing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-apply-routing &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/routing/apply&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5321,6 +5344,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_routing_gateway</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-routing-gateways &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/gateway&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5347,6 +5373,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_static_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-static-routes &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/static_route&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5373,6 +5402,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_routing_gateway</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-routing-gateways &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/gateway&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5399,6 +5431,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_static_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-static-routes &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/static_route&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5425,7 +5460,8 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_routing_gateway</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-routing-gateways &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/gateway&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -5453,7 +5489,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_routing_gateway_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-routing-gateway-details &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/gateway/detail&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -5481,7 +5517,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_static_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-static-routes &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/static_route&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -5509,6 +5545,10 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_routing_gateway</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-routing-gateways &quot;&quot;&quot;</span>
+
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/gateway&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5535,6 +5575,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/routing.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_static_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-static-routes &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/routing/static_route&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5601,6 +5644,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_pending_dnsmasq_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-apply-pending-dnsmasq-changes &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/apply&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5627,6 +5673,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_pending_unbound_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-apply-pending-unbound-changes &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/apply&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5653,6 +5702,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_dhcpd_static_mappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-dhcpd-static-mappings &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/static_mapping&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5679,6 +5731,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_dnsmasq_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-dnsmasq-host-override &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/host_override&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5705,6 +5760,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_dnsmasq_host_override_alias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-dnsmasq-host-override-alias &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/host_override/alias&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5731,6 +5789,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_ntpd_time_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-ntpd-time-server &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/ntpd/time_server&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5757,6 +5818,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_openvpn_client_specific_overrides</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-openvpn-client-specific-overrides &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/openvpn/csc&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5783,6 +5847,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_unbound_access_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-unbound-access-list &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/access_list&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5809,6 +5876,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_unbound_access_list_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-unbound-access-list-row &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/access_list/row&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5835,6 +5905,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_unbound_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-unbound-host-override &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/host_override&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5861,6 +5934,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_unbound_host_override_alias</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-unbound-host-override-alias &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/host_override/alias&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5887,6 +5963,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_dhcpd_static_mappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-dhcpd-static-mappings &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/static_mapping&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5913,6 +5992,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_dnsmasq_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-dnsmasq-host-override &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/host_override&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5939,6 +6021,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_ntpd_time_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-ntpd-time-server &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/ntpd/time_server&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5965,6 +6050,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_openvpn_client_specific_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-openvpn-client-specific-override &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/openvpn/csc&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -5991,6 +6079,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_unbound_access_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-unbound-access-list &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/access_list&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6017,6 +6108,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_unbound_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-unbound-host-override &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/host_override&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6043,7 +6137,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dhcpd_leases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dhcpd-leases &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/dhcp/lease&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6071,7 +6165,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dhcpd_service_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dhcpd-service-configuration &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/dhcpd&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6099,7 +6193,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dhcpd_static_mappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-dhcpd-static-mappings &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/static_mapping&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6127,7 +6221,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dnsmasq_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-dnsmasq-configuration &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/dnsmasq&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6155,7 +6249,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dnsmasq_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-dnsmasq-host-override &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/host_override&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6183,7 +6277,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_dynamic_dns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dynamic-dns &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/ddns&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6211,7 +6305,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_ntpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-ntpd-service_&quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/ntpd&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6239,7 +6333,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_openvpn_client_specific_overrides</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-openvpn-client-specific-overrides &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/openvpn/csc&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6267,7 +6361,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-services &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6295,7 +6389,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sshd_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-sshd-configuration &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/sshd&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6323,7 +6417,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_unbound_access_lists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-unbound-access-lists &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/access_list&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6351,7 +6445,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_unbound_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-unbound-configuration &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6379,7 +6473,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_unbound_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-unbound-host-override &quot;&quot;&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/host_override&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -6407,6 +6501,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_all_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-all-services &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6433,6 +6530,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_dhcpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-dhcpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6459,6 +6559,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_dnsmasq_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-restart-dnsmasq-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6485,6 +6588,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_dpinger_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-restart-dpinger-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dpinger/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6511,6 +6617,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_ntpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-ntpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/ntpd/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6537,6 +6646,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_sshd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-restart-sshd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/sshd/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6563,6 +6675,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_syslogd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-restart-syslogd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/syslogd/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6589,6 +6704,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">restart_unbound_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-restart-unbound-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/restart&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6615,6 +6733,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_all_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-start-all-services &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6641,6 +6762,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_dhcpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-start-dhcpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6667,6 +6791,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_dnsmasq_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-start-dnsmasq-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6693,6 +6820,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_dpinger_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-start-dpinger-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dpinger/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6719,6 +6849,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_ntpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-start-ntpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/ntpd/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6745,6 +6878,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_sshd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-start-sshd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/sshd/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6771,6 +6907,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_syslogd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-start-syslogd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/syslogd/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6797,6 +6936,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">start_unbound_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-start-unbound-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/start&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6823,6 +6965,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_all_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-stop-all-services &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6849,6 +6994,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_dhcpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-stop-dhcpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6875,6 +7023,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_dnsmasq_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-stop-dnsmasq-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6901,6 +7052,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_dpinger_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-stop-dpinger-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dpinger/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6927,6 +7081,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_ntpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-stop-ntpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/ntpd/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6953,6 +7110,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_sshd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-stop-sshd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/sshd/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -6979,6 +7139,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_syslogd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-stop-syslogd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/syslogd/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7005,6 +7168,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">stop_unbound_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-stop-unbound-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/stop&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7031,6 +7197,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_dhcpd_service_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-update-dhcpd-service-configuration &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7057,6 +7226,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_dhcpd_static_mappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-dhcpd-static-mappings &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dhcpd/static_mapping&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7083,6 +7255,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_dnsmasq_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-dnsmasq-host-override &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/dnsmasq/host_override&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7109,6 +7284,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_ntpd_service</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-update-ntpd-service_&quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/ntpd&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7135,6 +7313,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_openvpn_client_specific_overrides</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-openvpn-client-specific-overrides &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/services/openvpn/csc&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7161,6 +7342,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_sshd_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-update-sshd-configuration &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/sshd&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7187,6 +7371,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_unbound_access_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-unbound-access-list &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/access_list&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7213,6 +7400,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/service/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_unbound_host_override</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-unbound-host-override &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/services/unbound/host_override&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7615,6 +7805,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_system_ca</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-ca &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/ca&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7641,6 +7834,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_system_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-certificates &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/certificate&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7667,6 +7863,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_system_dns_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-dns-server &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/dns/server&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7693,6 +7892,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_system_reboot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-reboot &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/reboot&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7719,6 +7921,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_system_tunables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-system-tunables &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/tunable&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7745,6 +7950,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_system_arp_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-delete-system-arp-table &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/arp&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7771,6 +7979,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_system_ca</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-ca &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/ca&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7797,6 +8008,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_system_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-certificates &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/certificate&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7823,6 +8037,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_system_dns_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-dns-server &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/dns/server&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7849,6 +8066,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_system_tunables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-system-tunables &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/tunable&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -7875,7 +8095,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_api_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-api-configuration &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/api&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -7935,7 +8155,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_api_error_library</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-system-api-error-library &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/api/error&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -7996,7 +8216,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_arp_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-system-arp-table &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/arp&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8024,7 +8244,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_cas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-cas &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/ca&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8052,7 +8272,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-certificates &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/certificate&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8080,7 +8300,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-configuration &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/config&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8108,7 +8328,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_dns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-dns &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/dns&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8136,7 +8356,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_email_notification_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-email-notification-settings &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/notifications/email&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8164,7 +8384,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-hostname &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/hostname&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8192,7 +8412,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-tables &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/table&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8220,7 +8440,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_tunables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-read-system-tunables &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/tunable&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8248,7 +8468,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_system_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-version &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/version&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8276,6 +8496,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">halt_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-halt-system &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/halt&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8302,6 +8525,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_console_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-update-console-settings &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/system/console&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8381,6 +8607,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-configuration &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/config&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8407,6 +8636,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_dns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-dns &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/dns&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8433,6 +8665,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_email_notification_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-email-notification-settings &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/notifications/email&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8459,6 +8694,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-update-system-hostname &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/hostname&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8485,6 +8723,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_tunables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-system-tunables &quot;&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/system/tunable&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8548,6 +8789,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_ldap_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-ldap-auth-servers &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/auth_server/ldap&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8574,6 +8818,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_radius_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-create-radius-auth-servers &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/auth_server/radius&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8600,6 +8847,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_user_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-user-group &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/group&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8626,6 +8876,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_user_privileges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-user-privileges &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/privilege&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8652,6 +8905,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create-users &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8678,6 +8934,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#3-delete-auth-servers &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/auth_server&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8704,6 +8963,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_ldap_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-delete-ldap-auth-servers &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/auth_server/ldap&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8730,6 +8992,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_radius_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#5-delete-radius-auth-servers &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/auth_server/radius&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8756,6 +9021,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_user_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-user-group &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/group&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8782,6 +9050,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_user_privileges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-user-privileges &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user/privilege&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8808,6 +9079,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-delete-users &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -8834,7 +9108,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#6-read-auth-servers &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/user/auth_server&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8862,7 +9136,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_ldap_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#7-read-ldap-auth-servers &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/user/auth_server/ldap&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8890,7 +9164,7 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_radius_auth_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">filterargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#8-read-radius-auth-servers &quot;&quot;&quot;</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;/api/v1/user/auth_server/radius&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">filterargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -8946,6 +9220,9 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
           <summary>Source code in <code>pfsense_api_client/user.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update-users &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/user&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
