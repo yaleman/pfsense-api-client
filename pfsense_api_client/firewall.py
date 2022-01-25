@@ -106,12 +106,7 @@ def update_firewall_alias(self, *args: FirewallAliasUpdate) -> requests.Response
 
     payload = FirewallAliasUpdate(*args).dict()
 
-    raise NotImplementedError
-    return self.call(
-        url=url,
-        method=method,
-        payload=payload,
-        )
+    return self.call(url=url,method=method,payload=payload)
 
 # TODO: def create_firewall_alias_entry(self, **filterargs) -> requests.Response:
 # Add new entries to an existing firewall alias.
