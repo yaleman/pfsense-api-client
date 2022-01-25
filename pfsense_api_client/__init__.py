@@ -18,25 +18,30 @@ __all__ = [
     "PFSenseAPIClient",
 ]
 
+
 class PFSenseConfig(BaseModel):
-    """ This sets up the right typing from the config file"""
+    """This sets up the right typing from the config file"""
+
     username: str
     password: str
     port: int
     hostname: str
     mode: Optional[str]
 
-class PFSenseAPIClient():
-    """ pfSense API Client """
+
+class PFSenseAPIClient:
+    """pfSense API Client"""
+
     # pylint: disable=too-many-arguments
     def __init__(
         self,
-        username: Optional[str]=None,
-        password: Optional[str]=None,
-        hostname: Optional[str]=None,
-        port: Optional[int]=None,
-        config_filename: Optional[str]=None,
-        mode: Optional[str]=None):
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        hostname: Optional[str] = None,
+        port: Optional[int] = None,
+        config_filename: Optional[str] = None,
+        mode: Optional[str] = None,
+    ):
 
         if username:
             self.username = username
@@ -56,36 +61,34 @@ class PFSenseAPIClient():
             if not self.config_filename.exists():
                 error = f"Filename {self.config_filename.as_posix()} does not exist."
                 raise FileNotFoundError(error)
-            pydantic_config = PFSenseConfig(**json.load(self.config_filename.open(encoding="utf8")))
+            pydantic_config = PFSenseConfig(
+                **json.load(self.config_filename.open(encoding="utf8"))
+            )
             self.hostname = pydantic_config.hostname
             self.username = pydantic_config.username
             self.password = pydantic_config.password
             self.port = pydantic_config.port
             self.mode = pydantic_config.mode or "local"
 
-
         self.baseurl = f"https://{self.hostname}"
         if hasattr(self, "port"):
-            self.baseurl+=f":{self.port}"
+            self.baseurl += f":{self.port}"
 
     @validate_arguments
     def call(
         self,
         url: str,
-        method: Optional[str]=None,
-        payload: Dict[str, Any]=None,
-        ) -> requests.Response:
-        """ makes an API call """
+        method: Optional[str] = None,
+        payload: Dict[str, Any] = None,
+    ) -> requests.Response:
+        """makes an API call"""
         call_url = f"{self.baseurl}{url}"
 
         # print(f"mode: {self.mode}")
         if self.mode == "local":
             # this is the default
             if not payload:
-                payload = {
-                    "client-id": self.username,
-                    "client-token": self.password
-                }
+                payload = {"client-id": self.username, "client-token": self.password}
             else:
                 payload["client-id"] = self.username
                 payload["client-token"] = self.password
@@ -93,20 +96,22 @@ class PFSenseAPIClient():
             raise NotImplementedError("JWT and Access Token aren't implemented yet.")
 
         if method is None:
-            method="GET"
+            method = "GET"
         # print(f"calling {call_url} {method}")
         # print(f"payload: {payload}")
-        if method =="GET":
+        if method == "GET":
             response = requests.get(url=call_url, params=payload)
         elif method == "POST":
             response = requests.post(url=call_url, data=json.dumps(payload))
         else:
-            response = requests.request(method=method, url=call_url, data=json.dumps(payload))
+            response = requests.request(
+                method=method, url=call_url, data=json.dumps(payload)
+            )
         response.raise_for_status()
         return response
 
     def request_access_token(self):
-        """ gets a temporary access token
+        """gets a temporary access token
         https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-request-access-token
         """
         url = "/api/v1/access_token"
@@ -115,7 +120,7 @@ class PFSenseAPIClient():
     get_firewall_rule = firewall.get_firewall_rule
 
     apply_firewall_changes = firewall.apply_firewall_changes
-    delete_all_firewall_rules = firewall.delete_all_firewall_rules # lol
+    delete_all_firewall_rules = firewall.delete_all_firewall_rules  # lol
 
     create_firewall_alias = firewall.create_firewall_alias
     delete_firewall_alias = firewall.delete_firewall_alias
@@ -142,14 +147,14 @@ class PFSenseAPIClient():
     update_system_api_configuration = system.update_system_api_configuration
 
     def execute_shell_command(self, shell_cmd: str):
-        """ execute a shell command on the firewall
-    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-execute-shell-command
+        """execute a shell command on the firewall
+        https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-execute-shell-command
         """
         url = "/api/v1/diagnostics/command_prompt"
-        method="POST"
+        method = "POST"
 
         return self.call(
             url=url,
             method=method,
             payload={"shell_cmd": shell_cmd},
-            )
+        )
