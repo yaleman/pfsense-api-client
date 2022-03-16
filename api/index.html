@@ -365,6 +365,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pfsense_api_client.PFSenseAPIClient.load_config" class="md-nav__link">
+    load_config()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pfsense_api_client.PFSenseAPIClient.request_access_token" class="md-nav__link">
     request_access_token()
   </a>
@@ -2054,6 +2061,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pfsense_api_client.PFSenseAPIClient.load_config" class="md-nav__link">
+    load_config()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pfsense_api_client.PFSenseAPIClient.request_access_token" class="md-nav__link">
     request_access_token()
   </a>
@@ -3623,7 +3637,7 @@ PFSenseAPIClient        </code>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PFSenseAPIClient</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;pfSense API Client&quot;&quot;&quot;</span>
 
-    <span class="c1"># pylint: disable=too-many-arguments</span>
+    <span class="c1"># pylint: disable=too-many-arguments,too-many-instance-attributes</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">username</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3632,7 +3646,10 @@ PFSenseAPIClient        </code>
         <span class="n">port</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">config_filename</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">requests_session</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
     <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">requests_session</span>
 
         <span class="k">if</span> <span class="n">username</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
@@ -3648,29 +3665,35 @@ PFSenseAPIClient        </code>
             <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
 
         <span class="k">if</span> <span class="n">config_filename</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">config_filename</span><span class="p">))</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Filename </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span>
-                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-            <span class="n">pydantic_config</span> <span class="o">=</span> <span class="n">PFSenseConfig</span><span class="p">(</span>
-                <span class="o">**</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">hostname</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">hostname</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">username</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">password</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">port</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">or</span> <span class="s2">&quot;local&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config_filename</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">baseurl</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;port&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">baseurl</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PFSenseConfig</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Loads the config from the specified JSON file (see the `PFSenseConfig` class for what fields are required)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Filename </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="n">pydantic_config</span> <span class="o">=</span> <span class="n">PFSenseConfig</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hostname</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">hostname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">username</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">password</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">or</span> <span class="s2">&quot;local&quot;</span>
+        <span class="k">return</span> <span class="n">pydantic_config</span>
 
     <span class="nd">@validate_arguments</span>
     <span class="k">def</span> <span class="nf">call</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">payload</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">payload</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;makes an API call&quot;&quot;&quot;</span>
         <span class="n">call_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">baseurl</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -3691,17 +3714,17 @@ PFSenseAPIClient        </code>
         <span class="c1"># print(f&quot;calling {call_url} {method}&quot;)</span>
         <span class="c1"># print(f&quot;payload: {payload}&quot;)</span>
         <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
                 <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">response</span>
 
-    <span class="k">def</span> <span class="nf">request_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">request_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;gets a temporary access token</span>
 <span class="sd">        https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-request-access-token</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3737,7 +3760,7 @@ PFSenseAPIClient        </code>
 
     <span class="n">update_system_api_configuration</span> <span class="o">=</span> <span class="n">system</span><span class="o">.</span><span class="n">update_system_api_configuration</span>
 
-    <span class="k">def</span> <span class="nf">execute_shell_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shell_cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">execute_shell_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shell_cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;execute a shell command on the firewall</span>
 <span class="sd">        https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-execute-shell-command</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3820,7 +3843,7 @@ PFSenseAPIClient        </code>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">payload</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">payload</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;makes an API call&quot;&quot;&quot;</span>
     <span class="n">call_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">baseurl</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -3841,11 +3864,11 @@ PFSenseAPIClient        </code>
     <span class="c1"># print(f&quot;calling {call_url} {method}&quot;)</span>
     <span class="c1"># print(f&quot;payload: {payload}&quot;)</span>
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
             <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">call_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
         <span class="p">)</span>
     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
@@ -3942,7 +3965,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_all_firewall_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_all_firewall_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Deletes all existing firewall rules. This is useful for scripts that need to setup the firewall rules from scratch.</span>
 
 <span class="sd">    Note: this endpoint will not reload the firewall filter automatically, you must make another API call to the /api/v1/firewall/apply endpoint to do so. Ensure firewall rules are created before reloading the filter to prevent lockout!.</span>
@@ -3950,7 +3973,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-delete-all-firewall-rules&quot;&quot;&quot;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/firewall/rule/flush&quot;</span>
     <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -4018,7 +4041,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-execut
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">execute_shell_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shell_cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">execute_shell_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shell_cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;execute a shell command on the firewall</span>
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-execute-shell-command</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4418,6 +4441,46 @@ https://github.com/jaredhendrickson13/pfsense-api#3-read-firewall-aliases</p>
 
 
 
+<h3 id="pfsense_api_client.PFSenseAPIClient.load_config" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Loads the config from the specified JSON file (see the <code>PFSenseConfig</code> class for what fields are required)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PFSenseConfig</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Loads the config from the specified JSON file (see the `PFSenseConfig` class for what fields are required)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Filename </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="n">pydantic_config</span> <span class="o">=</span> <span class="n">PFSenseConfig</span><span class="p">(</span>
+        <span class="o">**</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_filename</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">hostname</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">hostname</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">username</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">password</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">port</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">pydantic_config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">or</span> <span class="s2">&quot;local&quot;</span>
+    <span class="k">return</span> <span class="n">pydantic_config</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h3 id="pfsense_api_client.PFSenseAPIClient.request_access_token" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">request_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
@@ -4431,7 +4494,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-reques
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">request_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">request_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;gets a temporary access token</span>
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-request-access-token</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4499,7 +4562,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-reques
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_api_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_api_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Update the API configuration.</span>
 
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api#3-read-system-api-version</span>
@@ -4564,18 +4627,38 @@ PFSenseConfig            (<span title="pydantic.main.BaseModel">BaseModel</span>
 
     <div class="doc doc-contents ">
 
-      <p>This sets up the right typing from the config file</p>
+      <p>This defines the expected config file</p>
+<pre><code>Example config file:
+</code></pre>
+<pre><code class="language-json">{
+        &quot;username&quot; : &quot;me&quot;,
+        &quot;password&quot; : &quot;mysupersecretpassword&quot;,
+        &quot;hostname&quot; : &quot;example.com&quot;,
+        &quot;port&quot; : 8443,
+}
+</code></pre>
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PFSenseConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This sets up the right typing from the config file&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;This defines the expected config file</span>
+
+<span class="sd">    Example config file:</span>
+<span class="sd">```json</span>
+<span class="sd">{</span>
+<span class="sd">        &quot;username&quot; : &quot;me&quot;,</span>
+<span class="sd">        &quot;password&quot; : &quot;mysupersecretpassword&quot;,</span>
+<span class="sd">        &quot;hostname&quot; : &quot;example.com&quot;,</span>
+<span class="sd">        &quot;port&quot; : 8443,</span>
+<span class="sd">}</span>
+<span class="sd">```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">port</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
 </code></pre></div>
         </details>
 
@@ -4629,6 +4712,7 @@ PFSenseConfig            (<span title="pydantic.main.BaseModel">BaseModel</span>
 
 
   <div class="doc doc-children">
+
 
 
 
@@ -5315,7 +5399,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/firewall.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_all_firewall_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">delete_all_firewall_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Deletes all existing firewall rules. This is useful for scripts that need to setup the firewall rules from scratch.</span>
 
 <span class="sd">    Note: this endpoint will not reload the firewall filter automatically, you must make another API call to the /api/v1/firewall/apply endpoint to do so. Ensure firewall rules are created before reloading the filter to prevent lockout!.</span>
@@ -5323,7 +5407,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-create
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-delete-all-firewall-rules&quot;&quot;&quot;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/api/v1/firewall/rule/flush&quot;</span>
     <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -10187,7 +10271,7 @@ https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#4-update
 
         <details class="quote">
           <summary>Source code in <code>pfsense_api_client/system.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_api_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_system_api_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Update the API configuration.</span>
 
 <span class="sd">    https://github.com/jaredhendrickson13/pfsense-api#3-read-system-api-version</span>
