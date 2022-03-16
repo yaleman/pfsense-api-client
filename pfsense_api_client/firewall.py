@@ -303,7 +303,7 @@ def update_nat_port_forward(self, **args) -> requests.Response:
 
 
 # pylint: disable=line-too-long
-def delete_all_firewall_rules(self):
+def delete_all_firewall_rules(self) -> requests.Response:
     """Deletes all existing firewall rules. This is useful for scripts that need to setup the firewall rules from scratch.
 
     Note: this endpoint will not reload the firewall filter automatically, you must make another API call to the /api/v1/firewall/apply endpoint to do so. Ensure firewall rules are created before reloading the filter to prevent lockout!.
@@ -311,7 +311,7 @@ def delete_all_firewall_rules(self):
     https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-delete-all-firewall-rules"""
     url = "/api/v1/firewall/rule/flush"
     method = "DELETE"
-    self.call(url=url, method=method)
+    return self.call(url=url, method=method)
 
 
 def create_firewall_schedule(self, **args) -> requests.Response:

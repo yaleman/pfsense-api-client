@@ -1,6 +1,6 @@
 """ system-related endpoints """
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 import pydantic
 import requests
@@ -60,7 +60,7 @@ def get_system_api_version(self):
     return self.call(url, method)
 
 
-def update_system_api_configuration(self, **kwargs):
+def update_system_api_configuration(self, **kwargs: Dict[str, Any]) -> requests.Response:
     """Update the API configuration.
 
     https://github.com/jaredhendrickson13/pfsense-api#3-read-system-api-version

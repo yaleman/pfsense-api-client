@@ -15,3 +15,31 @@ Configure it one of two ways
 At the moment it only supports the "Local Database" authentication method of username/password, but it should be relatively trivial to add JWT/API Token support at a later time.
 
 (If you're going to do this, modify init to have a "mode" setting, which `call()` checks, then modifies things as needed.)
+
+### Example JSON file
+
+```json
+{
+        "username" : "me",
+        "password" : "mysupersecretpassword",
+        "hostname" : "example.com",
+        "port" : 8443
+}
+```
+
+## Ignoring Certificate validation
+
+You can specify a `requests_session` option on construction, which one could configure to ignore verification.
+
+```python
+import requests
+
+from pfsense_api_client import PFSenseAPIClient
+
+session = requests.Session()
+session.verify = False
+api = PFSenseAPIClient(
+        config_filename="~/.config/pfsense.json",
+        requests_session=session,
+        )
+```

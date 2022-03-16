@@ -20,19 +20,30 @@ __all__ = [
 
 
 class PFSenseConfig(BaseModel):
-    """This sets up the right typing from the config file"""
+    """This defines the expected config file
+
+    Example config file:
+```json
+{
+        "username" : "me",
+        "password" : "mysupersecretpassword",
+        "hostname" : "example.com",
+        "port" : 8443,
+}
+```
+    """
 
     username: str
     password: str
     port: int
     hostname: str
-    mode: Optional[str]
+    mode: Optional[str] = "local"
 
 
 class PFSenseAPIClient:
     """pfSense API Client"""
 
-    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-arguments,too-many-instance-attributes
     def __init__(
         self,
         username: Optional[str] = None,
@@ -41,7 +52,10 @@ class PFSenseAPIClient:
         port: Optional[int] = None,
         config_filename: Optional[str] = None,
         mode: Optional[str] = None,
+        requests_session: requests.Session = requests.Session()
     ):
+
+        self.session = requests_session
 
         if username:
             self.username = username
@@ -57,29 +71,35 @@ class PFSenseAPIClient:
             self.mode = "local"
 
         if config_filename:
-            self.config_filename = Path(os.path.expanduser(config_filename))
-            if not self.config_filename.exists():
-                error = f"Filename {self.config_filename.as_posix()} does not exist."
-                raise FileNotFoundError(error)
-            pydantic_config = PFSenseConfig(
-                **json.load(self.config_filename.open(encoding="utf8"))
-            )
-            self.hostname = pydantic_config.hostname
-            self.username = pydantic_config.username
-            self.password = pydantic_config.password
-            self.port = pydantic_config.port
-            self.mode = pydantic_config.mode or "local"
+            self.config = self.load_config(config_filename)
 
         self.baseurl = f"https://{self.hostname}"
         if hasattr(self, "port"):
             self.baseurl += f":{self.port}"
+
+    def load_config(self, filename: str) -> PFSenseConfig:
+        """Loads the config from the specified JSON file (see the `PFSenseConfig` class for what fields are required)
+    """
+        self.config_filename = Path(os.path.expanduser(filename))
+        if not self.config_filename.exists():
+            error = f"Filename {self.config_filename.as_posix()} does not exist."
+            raise FileNotFoundError(error)
+        pydantic_config = PFSenseConfig(
+            **json.load(self.config_filename.open(encoding="utf8"))
+        )
+        self.hostname = pydantic_config.hostname
+        self.username = pydantic_config.username
+        self.password = pydantic_config.password
+        self.port = pydantic_config.port
+        self.mode = pydantic_config.mode or "local"
+        return pydantic_config
 
     @validate_arguments
     def call(
         self,
         url: str,
         method: Optional[str] = None,
-        payload: Dict[str, Any] = None,
+        payload: Optional[Dict[str, Any]] = None,
     ) -> requests.Response:
         """makes an API call"""
         call_url = f"{self.baseurl}{url}"
@@ -100,17 +120,17 @@ class PFSenseAPIClient:
         # print(f"calling {call_url} {method}")
         # print(f"payload: {payload}")
         if method == "GET":
-            response = requests.get(url=call_url, params=payload)
+            response = self.session.get(url=call_url, params=payload)
         elif method == "POST":
-            response = requests.post(url=call_url, data=json.dumps(payload))
+            response = self.session.post(url=call_url, data=json.dumps(payload))
         else:
-            response = requests.request(
+            response = self.session.request(
                 method=method, url=call_url, data=json.dumps(payload)
             )
         response.raise_for_status()
         return response
 
-    def request_access_token(self):
+    def request_access_token(self) -> requests.Response:
         """gets a temporary access token
         https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-request-access-token
         """
@@ -146,7 +166,7 @@ class PFSenseAPIClient:
 
     update_system_api_configuration = system.update_system_api_configuration
 
-    def execute_shell_command(self, shell_cmd: str):
+    def execute_shell_command(self, shell_cmd: str) -> requests.Response:
         """execute a shell command on the firewall
         https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-execute-shell-command
         """

@@ -1,5 +1,9 @@
 """ constant values """
 
+__all__ = [
+    "RESPONSE_CODES",
+]
+
 RESPONSE_CODES = {
     200: "API call succeeded",
     400: "An error was found within your requested parameters",
