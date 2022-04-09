@@ -59,7 +59,7 @@ def get_system_api_version(self) -> APIResponse:
     """
     url = "/api/v1/system/api/version"
     method = "GET"
-    return self.call_api(url, method)
+    return self.call_api_dict(url, method)
 
 
 def update_system_api_configuration(self,

@@ -13,7 +13,7 @@ import requests
 
 
 
-from .api_types import APIResponse
+from .api_types import APIResponse, APIResponseDict
 from .constants import RESPONSE_CODES
 from . import firewall
 from . import service
@@ -156,6 +156,16 @@ class PFSenseAPIClient:
         """ makes a call, returns the JSON blob as a dict """
         response = self.call(url, method, payload)
         return APIResponse.parse_obj(response.json())
+
+    def call_api_dict(
+        self,
+        url:str,
+        method: str = "GET",
+        payload: Optional[Dict[str, Any]]=None,
+        ) -> APIResponseDict:
+        """ makes a call, returns the JSON blob as a dict """
+        response = self.call(url, method, payload)
+        return APIResponseDict.parse_obj(response.json())
 
 
     def request_access_token(self) -> requests.Response:

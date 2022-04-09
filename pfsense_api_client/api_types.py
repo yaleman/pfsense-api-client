@@ -1,11 +1,13 @@
 """ typing for the API """
 
-from typing import Any, List, Optional
+from typing import Any, Dict, List
 
 from pydantic import BaseModel, Field, validator
 
 __all__ = [
-    "APIResponse"
+    "APIResponse",
+    "APIResponseDict",
+    "APIResponseList",
 ]
 
 class APIResponse(BaseModel):
@@ -21,3 +23,11 @@ class APIResponse(BaseModel):
         if value not in [200, 400, 401, 403, 404, 500]:
             raise ValueError(f"Got an invalid status code ({value}).")
         return value
+
+class APIResponseDict(APIResponse):
+    """ Dict-style JSON API response from the pFsense API"""
+    data: Dict[str, Any]
+
+class APIResponseList(APIResponse):
+    """ List-style JSON API response from the pFsense API"""
+    data: List[Any]

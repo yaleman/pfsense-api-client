@@ -71,7 +71,7 @@ def update_dhcpd_service_configuration(self, **args) -> Response:
 def get_dhcpd_leases(self, *filterargs) -> APIResponse:
     """https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-dhcpd-leases"""
     url = "/api/v1/services/dhcpd/lease"
-    return self.call_api(url, payload=filterargs)
+    return self.call_api_dict(url, payload=filterargs)
 
 
 def create_dhcpd_static_mappings(self, **args) -> Response:
