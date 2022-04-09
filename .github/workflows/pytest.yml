@@ -1,0 +1,2 @@
+---
+# nothing here, because we can't pytest without a live endpoint, and I'm not writing mock tests for it
