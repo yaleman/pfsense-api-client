@@ -4,11 +4,12 @@
 import sys
 from typing import Dict, List, Optional
 
-import questionary
-from pfsense_api_client import PFSenseAPIClient
-
 import click
 from loguru import logger
+import questionary
+
+from pfsense_api_client import PFSenseAPIClient
+
 
 LOGGER_FORMAT = '<level>{message}</level>'
 
@@ -26,6 +27,7 @@ def get_client() -> PFSenseAPIClient:
 def cli():
     """ DHCP CLI for pFsense """
 
+# pylint: disable=too-many-branches,invalid-name
 @cli.command()
 @click.option("--mac", "-m", help="Delete by MAC address")
 @click.option("--hostname", "-h", help="Delete by hostname")
