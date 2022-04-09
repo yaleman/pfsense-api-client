@@ -4,6 +4,7 @@ from typing import Optional
 import requests
 import pydantic
 
+from .api_types import APIResponse
 
 __all__ = [
     "get_carp_status",
@@ -58,10 +59,10 @@ def get_configuration_history_status_log(self, **filterargs) -> requests.Respons
     return self.call(url, payload=filterargs)
 
 
-def get_dhcp_status_log(self, *filterargs) -> requests.Response:
+def get_dhcp_status_log(self, *filterargs) -> APIResponse:
     """https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#2-read-dhcp-status-log"""
     url = "/api/v1/status/log/dhcp"
-    return self.call(url, payload=filterargs)
+    return self.call_api(url, payload=filterargs)
 
 
 def get_firewall_status_log(self, *filterargs) -> requests.Response:
@@ -85,4 +86,4 @@ def get_openvpn_status(self, *filterargs) -> requests.Response:
 def get_system_status(self, *filterargs) -> requests.Response:
     """https://github.com/jaredhendrickson13/pfsense-api/blob/master/README.md#1-read-system-status"""
     url = "/api/v1/status/system"
-    return self.call(url, payload=filterargs)
+    return self.call_json(url, payload=filterargs)

@@ -5,36 +5,26 @@ import pytest
 
 from pfsense_api_client import PFSenseAPIClient
 
-@pytest.fixture(name="pfsense")
-def pfsense_api_client():
-    """ returns a configured API client """
-    return PFSenseAPIClient(
-        config_filename="~/.config/pfsense-api.json"
-        )
+from .utils import client
 
-
-
-def test_get_firewall_alias(pfsense: PFSenseAPIClient):
+def test_get_firewall_alias(client: PFSenseAPIClient) -> None:
     """ pulls the full list of aliases """
-
-    result = pfsense.get_firewall_alias()
+    result = client.get_firewall_alias()
     assert result
     print(result.json())
 
-def test_get_firewall_alias_name(pfsense: PFSenseAPIClient):
+def test_get_firewall_alias_name(client: PFSenseAPIClient) -> None:
     """ pulls a firewall alias called zzz_testing """
-
-    result: requests.Response = pfsense.get_firewall_alias(name="zzz_testing")
+    result: requests.Response = client.get_firewall_alias(name="zzz_testing")
     assert result.status_code == 200
     assert "zzz_testing" in result.text
 
     print(result.json())
 
-def test_create_bogus_alias(pfsense: PFSenseAPIClient):
+def test_create_bogus_alias(client: PFSenseAPIClient) -> None:
     """ creates an alias called zzz_bogus """
-
     try:
-        result: requests.Response = pfsense.create_firewall_alias(
+        result: requests.Response = client.create_firewall_alias(
             name="zzzbogus",
             alias_type="host",
             descr = "Bogus description",
@@ -50,10 +40,10 @@ def test_create_bogus_alias(pfsense: PFSenseAPIClient):
 
     assert result.status_code == 200
 
-def test_delete_bogus_alias(pfsense: PFSenseAPIClient):
+def test_delete_bogus_alias(client: PFSenseAPIClient) -> None:
     """ delets an alias called zzzbogus """
 
-    result: requests.Response = pfsense.delete_firewall_alias(
+    result: requests.Response = client.delete_firewall_alias(
         name="zzzbogus",
         apply = False,
     )

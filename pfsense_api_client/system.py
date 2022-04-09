@@ -5,6 +5,8 @@ from typing import Any, Dict, List, Optional
 import pydantic
 import requests
 
+from .api_types import APIResponse
+
 __all__ = [
     "create_system_ca",
     "create_system_certificates",
@@ -41,26 +43,29 @@ __all__ = [
 ]
 
 
-def get_system_api_error(self):
+def get_system_api_error(self) -> APIResponse:
     """gets the list of error codes
 
     https://github.com/jaredhendrickson13/pfsense-api#2-read-system-api-error-library
     """
     url = "/api/v1/system/api/error"
-    return self.call(url)
+    return self.call_api(url)
 
 
-def get_system_api_version(self):
+def get_system_api_version(self) -> APIResponse:
     """Read the current API version and locate available version updates.
 
     https://github.com/jaredhendrickson13/pfsense-api#3-read-system-api-version
     """
     url = "/api/v1/system/api/version"
     method = "GET"
-    return self.call(url, method)
+    return self.call_api(url, method)
 
 
-def update_system_api_configuration(self, **kwargs: Dict[str, Any]) -> requests.Response:
+def update_system_api_configuration(self,
+    readonly: Optional[bool]=None,
+    **kwargs: Dict[str, Any],
+    ) -> requests.Response:
     """Update the API configuration.
 
     https://github.com/jaredhendrickson13/pfsense-api#3-read-system-api-version
@@ -86,7 +91,7 @@ def update_system_api_configuration(self, **kwargs: Dict[str, Any]) -> requests.
         hasync_username: Optional[str]
         hasync_password: Optional[str]
 
-    payload = APIConfiguration(**kwargs)
+    payload = APIConfiguration(readonly=readonly, **kwargs)
 
     return self.call(url, method, payload=payload.dict())
 

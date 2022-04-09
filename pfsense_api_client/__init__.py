@@ -10,8 +10,14 @@ from typing import Any, Dict, Optional
 from pydantic import BaseModel, validate_arguments
 import requests
 
+
+
+
+from .api_types import APIResponse
 from .constants import RESPONSE_CODES
 from . import firewall
+from . import service
+from . import status
 from . import system
 
 __all__ = [
@@ -98,7 +104,7 @@ class PFSenseAPIClient:
     def call(
         self,
         url: str,
-        method: Optional[str] = None,
+        method: str = "GET",
         payload: Optional[Dict[str, Any]] = None,
     ) -> requests.Response:
         """makes an API call"""
@@ -129,6 +135,28 @@ class PFSenseAPIClient:
             )
         response.raise_for_status()
         return response
+
+    def call_json(
+        self,
+        url:str,
+        method: str = "GET",
+        payload: Optional[Dict[str, Any]]=None,
+        ) -> Dict[str, Any]:
+        """ makes a call, returns the JSON blob as a dict """
+        response = self.call(url, method, payload)
+        result: Dict[str, Any] = response.json()
+        return result
+
+    def call_api(
+        self,
+        url:str,
+        method: str = "GET",
+        payload: Optional[Dict[str, Any]]=None,
+        ) -> APIResponse:
+        """ makes a call, returns the JSON blob as a dict """
+        response = self.call(url, method, payload)
+        return APIResponse.parse_obj(response.json())
+
 
     def request_access_token(self) -> requests.Response:
         """gets a temporary access token
@@ -165,6 +193,12 @@ class PFSenseAPIClient:
     get_virtual_ip = firewall.get_virtual_ip
 
     update_system_api_configuration = system.update_system_api_configuration
+
+    get_dhcp_status_log = status.get_dhcp_status_log
+
+    get_dhcpd_leases = service.get_dhcpd_leases
+    get_dhcpd_service_configuration = service.get_dhcpd_service_configuration
+    get_dhcpd_static_mappings = service.get_dhcpd_static_mappings
 
     def execute_shell_command(self, shell_cmd: str) -> requests.Response:
         """execute a shell command on the firewall
