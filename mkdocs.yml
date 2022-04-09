@@ -1,8 +1,6 @@
-# mkdocs.yml
 site_name: pfsense-api-client
 theme:
- name: "material"
-
+  name: material
 plugins:
 - search:
 - mkdocstrings:
@@ -12,8 +10,10 @@ plugins:
         rendering:
           show_source: true
     watch:
-    - "pfsense_api_client/"
-
+    - pfsense_api_client/
 nav:
-  - "Home": README.md
-  - "API Documentation": api.md
+- Home: README.md
+- API Documentation: api.md
+repo_name: yaleman/pfsense-api-client
+repo_url: https://github.com/yaleman/pfsense-api-client
+site_url: https://yaleman.github.io/pfsense-api-client/
