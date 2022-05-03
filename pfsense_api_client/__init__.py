@@ -162,10 +162,11 @@ class PFSenseAPIClient:
         url:str,
         method: str = "GET",
         payload: Optional[Dict[str, Any]]=None,
-        ) -> APIResponseDict:
+        ) -> APIResponse:
         """ makes a call, returns the JSON blob as a dict """
         response = self.call(url, method, payload)
-        return APIResponseDict.parse_obj(response.json())
+        print(response.json())
+        return APIResponse.parse_obj(response.json())
 
 
     def request_access_token(self) -> requests.Response:
