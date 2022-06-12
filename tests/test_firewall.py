@@ -1,9 +1,15 @@
 """ testing firewall things """
 
+import pytest
 
 from pfsense_api_client import PFSenseAPIClient
 
-from .utils import client
+@pytest.fixture()
+def client() -> PFSenseAPIClient:
+    """ returns a configured API client """
+    return PFSenseAPIClient(
+        config_filename="~/.config/pfsense-api.json"
+        )
 
 def test_firewall_get_rules(client: PFSenseAPIClient) -> None:
     """ tests getting rules """

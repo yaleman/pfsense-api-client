@@ -47,5 +47,6 @@ def test_delete_bogus_alias(client: PFSenseAPIClient) -> None:
         name="zzzbogus",
         apply = False,
     )
+    print(f"{result.content=}")
 
     assert result.status_code == 200
