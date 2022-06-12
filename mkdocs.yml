@@ -1,19 +1,28 @@
 site_name: pfsense-api-client
 theme:
   name: material
+  features:
+    - navigation.expand
 plugins:
 - search:
 - mkdocstrings:
     default_handler: python
     handlers:
       python:
-        rendering:
-          show_source: true
+        # rendering:
+        show_source: true
     watch:
     - pfsense_api_client/
 nav:
 - Home: README.md
-- API Documentation: api.md
+- Client Module: client.md
+- Mixins:
+  - Firewall: mixin_firewall.md
+  - Service: mixin_service.md
+  - Status: mixin_status.md
+  - System: mixin_system.md
+
+
 repo_name: yaleman/pfsense-api-client
 repo_url: https://github.com/yaleman/pfsense-api-client
 site_url: https://yaleman.github.io/pfsense-api-client/
