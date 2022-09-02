@@ -23,7 +23,7 @@ classifiers = [
 python = "^3.8"
 requests = "^2.28.1"
 click = "^8.0.3"
-pydantic = "^1.9.2"
+pydantic = "^1.10.1"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.15.0"
