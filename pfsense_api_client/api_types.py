@@ -123,9 +123,10 @@ class BasePFSenseAPIClient:
         if not self.config_filename.exists():
             error = f"Filename {self.config_filename.as_posix()} does not exist."
             raise FileNotFoundError(error)
-        pydantic_config = PFSenseConfig(
-            **json.load(self.config_filename.open(encoding="utf8"))
-        )
+        with self.config_filename.open(encoding="utf8") as file_handle:
+            pydantic_config = PFSenseConfig(
+                **json.load(file_handle)
+            )
         self.config = pydantic_config
         # self.hostname = pydantic_config.hostname
         # self.port = pydantic_config.port
